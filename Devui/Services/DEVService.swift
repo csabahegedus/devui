@@ -25,7 +25,7 @@ class DEVService {
         self.decoder = decoder
         self.session = session
         
-        self.decoder.dateDecodingStrategy = .iso8601
+        self.decoder.dateDecodingStrategy = .formatted(.iso8601Full)
     }
     
     func getProfile() -> AnyPublisher<Profile, NetworkError> {
