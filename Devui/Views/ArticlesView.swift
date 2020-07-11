@@ -10,7 +10,10 @@ import SwiftUI
 
 struct ArticlesView: View {
     var body: some View {
-        ArticlesListView()
+        NavigationView {
+            ArticlesListView()
+                .navigationBarTitle("articles_title")
+        }
     }
 }
 

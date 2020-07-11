@@ -16,6 +16,7 @@ class DEVService {
     @LazyInjected private var authService: AuthService
     @LazyInjected private var profileCache: Cache<String, Profile>
     @LazyInjected private var articlesCache: Cache<String, [Article]>
+    @LazyInjected private var followersCache: Cache<String, [Follower]>
     
     private let decoder: JSONDecoder
     private let session: URLSession
@@ -83,6 +84,70 @@ class DEVService {
             })
             .handleEvents(receiveOutput: { profile in
                 self.profileCache.insert(profile, forKey: cacheKey)
+            })
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
+    func getFollowers(page: Int = 1) -> AnyPublisher<[Follower], NetworkError> {
+        os_log(.info, log: Loggers.network, "Getting followers, page %{PUBLIC}d", page)
+        
+        guard let apiKey = authService.apiKey else {
+            os_log(.error, log: Loggers.network, "Failed to get followers: no API key provided")
+            return Fail(error: NetworkError.unauthorized)
+                .eraseToAnyPublisher()
+        }
+        
+        var components = URLComponents(string: baseURL.absoluteString)!
+        components.path.append("/followers/users")
+        components.queryItems = [
+            URLQueryItem(name: "page", value: String(describing: page)),
+            URLQueryItem(name: "per_page", value: String(describing: Constants.followersPerPage))
+        ]
+        
+        let url = components.url!
+        
+        let cacheKey = url.absoluteString + apiKey
+        
+        if let followers = followersCache.value(forKey: cacheKey) {
+            return Just(followers)
+                .setFailureType(to: NetworkError.self)
+                .eraseToAnyPublisher()
+        }
+        
+        var request = URLRequest(url: url)
+        request.addValue(apiKey, forHTTPHeaderField: "api-key")
+        
+        return session.dataTaskPublisher(for: request)
+            .tryMap({ result -> Data in
+                guard let response = result.response as? HTTPURLResponse else {
+                    throw NetworkError.unknown
+                }
+                
+                os_log(.info, log: Loggers.network, "Followers fetch request completed with status code %{PUBLIC}d", response.statusCode)
+                
+                switch response.statusCode {
+                case 200:
+                    return result.data
+                case 401:
+                    throw NetworkError.unauthorized
+                default:
+                    throw NetworkError.unknown
+                }
+            })
+            .decode(type: [Follower].self, decoder: decoder)
+            .mapError({ (error: Error) -> NetworkError in
+                switch error {
+                case is DecodingError:
+                    return .decoding
+                case is NetworkError:
+                    return error as! NetworkError
+                default:
+                    return .unknown
+                }
+            })
+            .handleEvents(receiveOutput: { followers in
+                self.followersCache.insert(followers, forKey: cacheKey)
             })
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()

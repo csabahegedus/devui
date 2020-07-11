@@ -21,6 +21,7 @@ extension Resolver {
         register(name: "images") { Cache<String, Data>() }.scope(application)
         register { Cache<String, Profile>() }.scope(application)
         register { Cache<String, [Article]>() }.scope(application)
+        register { Cache<String, [Follower]>() }.scope(application)
     }
 }
 

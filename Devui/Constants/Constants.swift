@@ -10,4 +10,5 @@ import Foundation
 
 enum Constants {
     static let articlesPerPage = 10
+    static let followersPerPage = 30
 }
