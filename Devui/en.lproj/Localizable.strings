@@ -25,6 +25,7 @@
 
 "article_not_published" = "Not published yet.";
 "article_published_param" = "Published %@.";
+"articles_tab" = "Articles";
 "articles_title" = "Your articles";
 
 "authentication_sign_in" = "Sign in";
@@ -45,3 +46,8 @@
 "faq_answer_2" = "No. Your key is only saved locally on your phone (UserDefaults).";
 "faq_question_3" = "Is this app open source?";
 "faq_answer_3" = "Yes. You can find the source code on emilioschepis's GitHub.";
+
+"followers_tab" = "Followers";
+"followers_title" = "Your followers";
+
+"profile_tab" = "Profile";

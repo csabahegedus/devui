@@ -23,6 +23,7 @@ struct ArticlesListItemView: View {
                 .map({ NetworkImage(url: $0) })
                 .scaledToFill()
                 .frame(height: 64)
+                .clipShape(RoundedRectangle(cornerRadius: 14))
                 .clipped()
         }
     }
@@ -92,19 +93,17 @@ struct ArticlesListItemView: View {
                 tagsList
                 publishedText
                 
-                Divider()
-                    .padding(.bottom)
-                
                 actionsView
             }
-            .padding()
+            .padding(.vertical)
         }
-        .cornerRadius(14)
-        .background(
-            RoundedRectangle(cornerRadius: 14)
-                .foregroundColor(Color(UIColor.secondarySystemBackground))
-                .shadow(radius: 4)
-        )
+//        .cornerRadius(14)
+//        .background(
+//            RoundedRectangle(cornerRadius: 14)
+//                .stroke()
+//                .foregroundColor(Color(UIColor.systemFill))
+//                .shadow(radius: 4)
+//        )
         .sheet(isPresented: $showingShareSheet) {
             ActivityView(activityItems: [self.viewModel.url])
         }

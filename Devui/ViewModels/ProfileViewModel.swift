@@ -17,6 +17,7 @@ class ProfileViewModel: ObservableObject {
     @Published private var profile: Profile?
     @Published private var error: Error?
     @Published var loading: Bool = true
+    @Published var username: String?
     @Published var profileImage: URL?
     @Published var errorMessage: String?
     
@@ -42,6 +43,12 @@ class ProfileViewModel: ObservableObject {
             .compactMap({ $0 })
             .compactMap({ URL(string: $0.profileImage) })
             .assign(to: \.profileImage, on: self)
+            .store(in: &cancellables)
+        
+        $profile
+            .compactMap({ $0 })
+            .map({ $0.username })
+            .assign(to: \.username, on: self)
             .store(in: &cancellables)
         
         $error

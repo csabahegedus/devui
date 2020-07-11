@@ -10,46 +10,26 @@ import SwiftUI
 
 struct MainView: View {
     
-    @ObservedObject private var viewModel = ProfileViewModel()
-    @State private var showingProfileActionSheet = false
-    
-    var profileImage: some View {
-        Group {
-            viewModel.profileImage
-                .map({ NetworkImage(url: $0) })?
-                .scaledToFit()
-                .aspectRatio(1, contentMode: .fit)
-        }
-        .frame(width: 32, height: 32, alignment: .center)
-        .clipShape(Circle())
-        .overlay(Circle().stroke(Color.primary, lineWidth: 2))
-    }
-    
-    var profileButton: some View {
-        // An actual button here would lose all the padding.
-        profileImage
-            .onTapGesture { self.showingProfileActionSheet = true }
-            .accessibility(label: Text("accessibility_profile_label"))
-            .accessibility(hint: Text("accessibility_profile_hint"))
-            .accessibility(addTraits: .isButton)
-            .accessibility(removeTraits: .isImage)
-    }
-    
     var body: some View {
-        NavigationView {
+        TabView {
             ArticlesView()
-                .navigationBarTitle("articles_title")
-                .navigationBarItems(trailing: profileButton)
-                .alert(item: $viewModel.errorMessage) {
-                    Alert(title: Text("error_network"), message: Text($0))
+                .tabItem {
+                    if #available(iOS 14, *) {
+                        Image(systemName: "doc.append.fill")
+                    } else {
+                        Image(systemName: "doc.text.fill")
+                    }
+                    Text("articles_tab")
                 }
-                .actionSheet(isPresented: $showingProfileActionSheet) {
-                    ActionSheet(title: Text("generic_actions"), buttons: [
-                        .destructive(Text("authentication_sign_out"), action: {
-                            self.viewModel.signOut()
-                        }),
-                        .cancel()
-                    ])
+            FollowersView()
+                .tabItem {
+                    Image(systemName: "person.3.fill")
+                    Text("followers_tab")
+                }
+            ProfileView()
+                .tabItem {
+                    Image(systemName: "person.crop.circle.fill")
+                    Text("profile_tab")
                 }
         }
     }

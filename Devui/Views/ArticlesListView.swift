@@ -12,10 +12,6 @@ struct ArticlesListView: View {
     
     @ObservedObject private var viewModel = ArticlesListViewModel()
     
-    init() {
-        UITableView.appearance().separatorStyle = .none
-    }
-    
     func onArticleAppear(_ article: Article) {
         if viewModel.articles.isLastItem(article) {
             viewModel.loadMoreArticles()
@@ -25,10 +21,8 @@ struct ArticlesListView: View {
     var body: some View {
         List(viewModel.articles) { article in
             ArticlesListItemView(article)
-                .padding(.bottom)
                 .onAppear { self.onArticleAppear(article) }
         }
-        .listStyle(PlainListStyle())
     }
 }
 

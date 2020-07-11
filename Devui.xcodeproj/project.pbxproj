@@ -45,6 +45,12 @@
 		BC685C712445A20B00370633 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC685C702445A20B00370633 /* Keys.swift */; };
 		BC685C732445AE6900370633 /* RandomAccessCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC685C722445AE6900370633 /* RandomAccessCollection.swift */; };
 		BC685C772445B7C300370633 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC685C762445B7C300370633 /* String.swift */; };
+		BC9BFE3724B9CAD700ABB2AE /* FollowersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9BFE3624B9CAD700ABB2AE /* FollowersView.swift */; };
+		BC9BFE3924B9CB7700ABB2AE /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9BFE3824B9CB7700ABB2AE /* ProfileView.swift */; };
+		BC9BFE3B24B9D1D500ABB2AE /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9BFE3A24B9D1D500ABB2AE /* Follower.swift */; };
+		BC9BFE3D24B9D35400ABB2AE /* FollowersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9BFE3C24B9D35400ABB2AE /* FollowersListViewModel.swift */; };
+		BC9BFE3F24B9D42B00ABB2AE /* FollowersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9BFE3E24B9D42B00ABB2AE /* FollowersListView.swift */; };
+		BC9BFE4124B9D4CE00ABB2AE /* FollowersListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9BFE4024B9D4CE00ABB2AE /* FollowersListItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +93,12 @@
 		BC685C702445A20B00370633 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		BC685C722445AE6900370633 /* RandomAccessCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomAccessCollection.swift; sourceTree = "<group>"; };
 		BC685C762445B7C300370633 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		BC9BFE3624B9CAD700ABB2AE /* FollowersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersView.swift; sourceTree = "<group>"; };
+		BC9BFE3824B9CB7700ABB2AE /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		BC9BFE3A24B9D1D500ABB2AE /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
+		BC9BFE3C24B9D35400ABB2AE /* FollowersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersListViewModel.swift; sourceTree = "<group>"; };
+		BC9BFE3E24B9D42B00ABB2AE /* FollowersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersListView.swift; sourceTree = "<group>"; };
+		BC9BFE4024B9D4CE00ABB2AE /* FollowersListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersListItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +123,10 @@
 				BC12F7A8244524A10031A419 /* MainView.swift */,
 				BC116C09244617630046DAD4 /* AuthView.swift */,
 				BC36A86124474447007E90BE /* FAQView.swift */,
+				BC9BFE3624B9CAD700ABB2AE /* FollowersView.swift */,
+				BC9BFE3824B9CB7700ABB2AE /* ProfileView.swift */,
+				BC9BFE3E24B9D42B00ABB2AE /* FollowersListView.swift */,
+				BC9BFE4024B9D4CE00ABB2AE /* FollowersListItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -123,6 +139,7 @@
 				BC12F79C24451B300031A419 /* ArticlesListItemInteractionsViewModel.swift */,
 				BC12F7AA244524F90031A419 /* ProfileViewModel.swift */,
 				BC116C0B244617810046DAD4 /* AuthViewModel.swift */,
+				BC9BFE3C24B9D35400ABB2AE /* FollowersListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -141,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				BC12F7892445091C0031A419 /* Article.swift */,
+				BC9BFE3A24B9D1D500ABB2AE /* Follower.swift */,
 				BC12F7A6244523770031A419 /* Profile.swift */,
 				BC36A8632447445C007E90BE /* FAQ.swift */,
 			);
@@ -312,16 +330,19 @@
 				BC56175C2444EB560065BA47 /* AppDelegate.swift in Sources */,
 				BC116C1924466B3D0046DAD4 /* Constants.swift in Sources */,
 				BC12F7952445128F0031A419 /* DEVService.swift in Sources */,
+				BC9BFE3D24B9D35400ABB2AE /* FollowersListViewModel.swift in Sources */,
 				BC685C6C24459F3600370633 /* AuthService.swift in Sources */,
 				BC685C6A24459E3C00370633 /* Cache.swift in Sources */,
 				BC12F79F24451B810031A419 /* ArticlesListItemInteractionsView.swift in Sources */,
 				BC685C732445AE6900370633 /* RandomAccessCollection.swift in Sources */,
+				BC9BFE3924B9CB7700ABB2AE /* ProfileView.swift in Sources */,
 				BC56175E2444EB560065BA47 /* SceneDelegate.swift in Sources */,
 				BC12F7A324451D510031A419 /* ImagesService.swift in Sources */,
 				BC12F7A124451CB10031A419 /* NetworkImage.swift in Sources */,
 				BC12F79B244519F00031A419 /* ArticlesListItemView.swift in Sources */,
 				BC116C0E244634770046DAD4 /* ActivityView.swift in Sources */,
 				BC116C172446657B0046DAD4 /* Loggers.swift in Sources */,
+				BC9BFE3B24B9D1D500ABB2AE /* Follower.swift in Sources */,
 				BC12F78C24450FC30031A419 /* ArticlesListViewModel.swift in Sources */,
 				BC12F7AB244524F90031A419 /* ProfileViewModel.swift in Sources */,
 				BC116C0A244617630046DAD4 /* AuthView.swift in Sources */,
@@ -329,9 +350,12 @@
 				BC685C712445A20B00370633 /* Keys.swift in Sources */,
 				BC12F797244512FC0031A419 /* NetworkError.swift in Sources */,
 				BC116C1524465D920046DAD4 /* NSLocalizedString.swift in Sources */,
+				BC9BFE3F24B9D42B00ABB2AE /* FollowersListView.swift in Sources */,
+				BC9BFE4124B9D4CE00ABB2AE /* FollowersListItemView.swift in Sources */,
 				BC685C6824459CBE00370633 /* ArticlesView.swift in Sources */,
 				BC12F7932445104E0031A419 /* ArticlesListItemViewModel.swift in Sources */,
 				BC0A4C952448CACD009A8C18 /* DateFormatter.swift in Sources */,
+				BC9BFE3724B9CAD700ABB2AE /* FollowersView.swift in Sources */,
 				BC5617602444EB560065BA47 /* ContentView.swift in Sources */,
 				BC36A8642447445C007E90BE /* FAQ.swift in Sources */,
 				BC12F799244517960031A419 /* ArticlesListView.swift in Sources */,
