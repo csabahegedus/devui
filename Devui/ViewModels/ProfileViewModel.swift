@@ -19,7 +19,7 @@ class ProfileViewModel: ObservableObject {
     @Published var loading: Bool = true
     @Published var profileImage: URL?
     @Published var errorMessage: String?
-
+    
     private var cancellables = Set<AnyCancellable>()
     
     init() {
@@ -31,9 +31,9 @@ class ProfileViewModel: ObservableObject {
                 case .finished:
                     break
                 }
-                }, receiveValue: { [weak self] profile in
-                    self?.loading = false
-                    self?.profile = profile
+            }, receiveValue: { [weak self] profile in
+                self?.loading = false
+                self?.profile = profile
             })
             .store(in: &cancellables)
         

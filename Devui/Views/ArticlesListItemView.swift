@@ -85,7 +85,7 @@ struct ArticlesListItemView: View {
         VStack(spacing: 0) {
             coverImage
                 .accessibility(hidden: true)
-                
+            
             VStack(alignment: .leading, spacing: 8) {
                 titleText
                 descriptionText

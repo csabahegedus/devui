@@ -28,6 +28,7 @@ struct ArticlesListView: View {
                 .padding(.bottom)
                 .onAppear { self.onArticleAppear(article) }
         }
+        .listStyle(PlainListStyle())
     }
 }
 
